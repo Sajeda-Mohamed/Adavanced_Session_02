@@ -54,6 +54,20 @@ namespace Assignment
                 Console.WriteLine(item);
             }
         }
+        static void CheckIfBalanced(Stack<char> S)
+        {
+            while(S.Count > 0)
+            {
+                foreach (char c in S)
+                {
+                    if (c == '[' || c == '{' || c == '(')
+                        S.Push(c);
+                    else if (c == ']' || c == '}' || c == ')')
+                        if (S.Count == 0 || S.Pop().Equals('[') || S.Pop().Equals('{') || S.Pop().Equals('('))
+                            break;
+                }
+            }
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
@@ -72,11 +86,22 @@ namespace Assignment
             queue.Enqueue(1);
             queue.Enqueue(2);
             queue.Enqueue(3);
-            Console.WriteLine("Before the Reverse : ");
-            PrintQueue(queue);
-            ReverseElements(queue);
-            Console.WriteLine("After the Reverse : ");
-            PrintQueue(queue);
+            //Console.WriteLine("Before the Reverse : ");
+            //PrintQueue(queue);
+            //ReverseElements(queue);
+            //Console.WriteLine("After the Reverse : ");
+            //PrintQueue(queue);
+            #endregion
+
+            #region Q04-Parentheses is Balanced
+            Stack<char> stack = new Stack<char>();//[()]{}
+            //stack.Push('[');
+            //stack.Push(']');
+            //stack.Push('{');
+            //stack.Push('}');
+            //stack.Push('(');
+            //stack.Push(')');
+            //CheckIfBalanced(stack);
             #endregion
         }
     }
