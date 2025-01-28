@@ -35,6 +35,25 @@ namespace Assignment
                     Console.WriteLine("No");
             }
         }
+        static void ReverseElements(Queue<int> q)
+        {
+            Stack<int> stack = new Stack<int>();
+            while (q.Count > 0)
+            {
+                stack.Push(q.Dequeue());
+            }
+            while(stack.Count > 0)
+            {
+                q.Enqueue(stack.Pop());
+            }
+        }
+        static void PrintQueue(Queue<int> q)
+        {
+            foreach (int item in q)
+            {
+                Console.WriteLine(item);
+            }
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
@@ -45,7 +64,19 @@ namespace Assignment
 
             #region Q2-Palindrome
             int[] Numbers = { 1, 2, 3, 2, 1 };
-            CheckPalindrom(Numbers, 5);
+            //CheckPalindrom(Numbers, 5);
+            #endregion
+
+            #region Q03-ReverseFromQueueToStack
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            Console.WriteLine("Before the Reverse : ");
+            PrintQueue(queue);
+            ReverseElements(queue);
+            Console.WriteLine("After the Reverse : ");
+            PrintQueue(queue);
             #endregion
         }
     }
