@@ -3,18 +3,18 @@ namespace Demo
 {
     internal class Program
     {
-        //public static int SumArrayList (ArrayList array)
-        //{
-        //    int sum = 0;
-        //    if(array != null)
-        //    {
-        //        for (int i = 0; i < array.Count; i++)
-        //        {
-        //            sum += (int)array[i];
-        //        }
-        //    }
-        //    return sum;
-        //}
+        public static int SumArrayList(List<int> array)
+        {
+            int sum = 0;
+            if (array != null)
+            {
+                for (int i = 0; i < array.Count; i++)
+                {
+                    sum += array[i];
+                }
+            }
+            return sum;
+        }
         static void Main(string[] args)
         {
             #region NonGenaric Collections - ArrayLists
@@ -40,7 +40,27 @@ namespace Demo
             //SumArrayList(arrayList);
             #endregion
 
-            
+            #region Genaric Collections - Lists
+            List<int> Numbers = new List<int>(10) { 1, 2, 3, 4, 5 };
+            //Console.WriteLine($"Count : {Numbers.Count} , Capacity : {Numbers.Capacity}");
+
+            //Numbers.Add(1);
+            //Numbers.Add(2);
+            //Numbers.AddRange(new int[] {3,4});
+
+            Numbers.Add(6);
+            Numbers.TrimExcess(); //  DeAllocate
+            //foreach (int item in Numbers)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            //Console.WriteLine($"Count : {Numbers.Count} , Capacity : {Numbers.Capacity}");
+
+            Numbers[0] = 100;  // Use Indexer as Setter
+            //Console.WriteLine(Numbers[0]);//Use Indexer as Getter
+
+            //Console.WriteLine($"Sum is : {SumArrayList(Numbers)}");
+            #endregion
         }
     }
 }
