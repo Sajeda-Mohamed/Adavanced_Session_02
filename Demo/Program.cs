@@ -100,7 +100,23 @@ namespace Demo
 
             #endregion
 
+            #region Generic Collections - Other Lists
+            LinkedList<int> list = new LinkedList<int>(); // Nodes 
 
+            Stack<int> stack = new Stack<int>();
+            stack.Push(1);
+            stack.Push(2);
+
+            //Console.WriteLine(stack.Pop());
+            //Console.WriteLine(stack.Peek()); ==> Top Element
+
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+
+            //Console.WriteLine(queue.Dequeue());
+            //Console.WriteLine(queue.Peek()); ==> Front Element
+            #endregion
         }
     }
 }
