@@ -20,12 +20,32 @@ namespace Assignment
                 Console.WriteLine(count);
             } 
         }
+        static void CheckPalindrom(int[] arr, int num)
+        {
+            int count = 0;
+            if (arr is not null)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    count++;
+                }
+                if(count == num)
+                    Console.WriteLine("Yes");
+                else
+                    Console.WriteLine("No");
+            }
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
             int[] arr = { 3, 5, 11 };
             int[] queries = { 1, 5, 13 };
-           //CountGreaterNums(arr, queries); 
+            //CountGreaterNums(arr, queries); 
+            #endregion
+
+            #region Q2-Palindrome
+            int[] Numbers = { 1, 2, 3, 2, 1 };
+            CheckPalindrom(Numbers, 5);
             #endregion
         }
     }
