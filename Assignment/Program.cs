@@ -147,6 +147,23 @@ namespace Assignment
             if(!found)
                 Console.WriteLine("Target was not found");
         }
+        static void FindIntersection(int[] arr1, int[] arr2)
+        {
+            int count = 0;
+            for (int i = 0; i < arr1.Length; i++)
+            {              
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr1[i] == arr2[j])
+                    {
+                        count++;
+                        int help = count % 2;
+                        if (help == 0)
+                            Console.WriteLine(arr1[i]);
+                    } 
+                }
+            }
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
@@ -208,7 +225,13 @@ namespace Assignment
             #endregion
 
             #region Q08-Target in Stack
-            PutOntoStack();
+            //PutOntoStack();
+            #endregion
+
+            #region Q09-Intersection 2 Lists
+            int[] arr1 = new int[] { 1, 2, 3, 4, 4 };
+            int[] arr2 = new int[] { 10, 4 };
+            FindIntersection(arr1, arr2);
             #endregion
         }
     }
