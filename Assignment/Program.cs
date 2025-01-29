@@ -1,4 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Collections;
+using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace Assignment
 {
@@ -93,6 +95,24 @@ namespace Assignment
                 Console.WriteLine(i + " ");
             }
         }
+        static ArrayList RemoveOdd(ArrayList arrList)
+        {
+            for (int i = 0; i < arrList.Count; i++)
+            {
+                if ((int)arrList[i] % 2 != 0)
+                {
+                    arrList.RemoveAt(i);
+                }
+            }
+            return arrList;
+        }
+        static void PrintArrList(ArrayList arrayList)
+        {
+            foreach (int i in arrayList)
+            {
+                Console.WriteLine(i);
+            }
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
@@ -131,8 +151,14 @@ namespace Assignment
 
             #region Q05-Duplicate Elements
             List<int> list = new List<int>() { 1, 2, 3, 2, 4, 4 };
-            List<int> Result = RemoveDuplicate(list);
-            PrintList(Result);
+            //List<int> Result = RemoveDuplicate(list);
+            //PrintList(Result);
+            #endregion
+
+            #region Q06-Remove Odd Numbers
+            ArrayList arrayList = new ArrayList() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            ArrayList newArrList = RemoveOdd(arrayList);
+            PrintArrList(newArrList);
             #endregion
         }
     }
