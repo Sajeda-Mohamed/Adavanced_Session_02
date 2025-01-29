@@ -189,6 +189,26 @@ namespace Assignment
             }
             return Result;
         }
+        static Queue<int> ReverseQueue<T>(Queue<int> q, int k)
+        {
+            if (q is not null && q.Count != 0 && k <= q.Count)
+            {
+                Stack<int> stack = new Stack<int>();
+                for (int i = 0; i < k; i++)
+                {
+                    stack.Push(q.Dequeue());
+                }
+                while(stack.Count > 0)
+                {
+                    q.Enqueue(stack.Pop());
+                }
+                for (int i = 0; i < q.Count-k; i++)
+                {
+                    q.Enqueue(q.Dequeue());
+                }
+            }
+            return q;
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
@@ -238,10 +258,10 @@ namespace Assignment
             #endregion
 
             #region Q07-Queue Different Data Type
-            Queue queue = new Queue();
-            queue.Enqueue(1);
-            queue.Enqueue("Apple");
-            queue.Enqueue(5.28);
+            //Queue queue = new Queue();
+            //queue.Enqueue(1);
+            //queue.Enqueue("Apple");
+            //queue.Enqueue(5.28);
 
             //foreach (var item in queue)
             //{
@@ -260,14 +280,28 @@ namespace Assignment
             #endregion
 
             #region Q10-Target Sum
-            ArrayList arrayList = new ArrayList() { 1, 2, 3, 5, 7 };
-            ArrayList newArrayList = FinDSumUpTarget(arrayList, 12);
-            if(newArrayList.Count > 0)
+            //ArrayList arrayList = new ArrayList() { 1, 2, 3, 5, 7 };
+            //ArrayList newArrayList = FinDSumUpTarget(arrayList, 12);
+            //if(newArrayList.Count > 0)
+            //{
+            //    PrintArrList(newArrayList);
+            //}
+            //else
+            //    Console.WriteLine("there is no array list equals to target");
+            #endregion
+
+            #region Q11-Reverse Queue
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+            Queue<int> newQueue = ReverseQueue<int>(queue, 3);
+            foreach (int item in newQueue)
             {
-                PrintArrList(newArrayList);
+                Console.WriteLine(item +" ");
             }
-            else
-                Console.WriteLine("there is no array list equals to target");
             #endregion
         }
     }
