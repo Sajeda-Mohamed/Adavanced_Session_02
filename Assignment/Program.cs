@@ -114,6 +114,39 @@ namespace Assignment
                 Console.WriteLine(i);
             }
         }
+        static void PutOntoStack()
+        {
+            Stack stack = new Stack();
+            int[] Numbers = { 1, 3, 2, 4, 5, 8, 9 };
+            foreach (var i in Numbers)
+            {
+                stack.Push(i);
+            }
+            Console.WriteLine("Enter the target : ");
+            bool flag = int.TryParse(Console.ReadLine(), out int num);
+            SearchForTarget(stack, num);
+        }
+        static void SearchForTarget(Stack S, int num)
+        {
+            bool found = false;
+            int count = 0;
+            foreach (int i in S)
+            {
+                count++;
+                if (num == i)
+                {
+                    found = true;
+                }
+                if (found)
+                { 
+                    Console.WriteLine($"Target was found successfully and count of " +
+                        $"elements were checked before finding the target = {count - 1}");
+                    break;
+                }
+            }
+            if(!found)
+                Console.WriteLine("Target was not found");
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
@@ -140,14 +173,14 @@ namespace Assignment
             #endregion
 
             #region Q04-Parentheses is Balanced
-            Stack<char> stack = new Stack<char>();//[()]{}
-                                                  //stack.Push('[');
-                                                  //stack.Push(']');
-                                                  //stack.Push('{');
-                                                  //stack.Push('}');
-                                                  //stack.Push('(');
-                                                  //stack.Push(')');
-                                                  //CheckIfBalanced(stack);
+            //Stack<char> stack = new Stack<char>();//[()]{}
+            //stack.Push('[');
+            //stack.Push(']');
+            //stack.Push('{');
+            //stack.Push('}');
+            //stack.Push('(');
+            //stack.Push(')');
+            //CheckIfBalanced(stack);
             #endregion
 
             #region Q05-Duplicate Elements
@@ -172,6 +205,10 @@ namespace Assignment
             //{
             //    Console.WriteLine($"item is : {item}");
             //}
+            #endregion
+
+            #region Q08-Target in Stack
+            PutOntoStack();
             #endregion
         }
     }
