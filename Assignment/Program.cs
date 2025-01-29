@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
@@ -6,21 +7,21 @@ namespace Assignment
 {
     internal class Program
     {
-        static void CountGreaterNums(int[] arr, int[]queries)
+        static void CountGreaterNums(int[] arr, int[] queries)
         {
             for (int i = 0; i < queries.Length; i++)
             {
                 int count = 0;
                 for (int j = 0; j < arr.Length; j++)
                 {
-                    if(arr is not null && queries is not null)
+                    if (arr is not null && queries is not null)
                     {
                         if (arr[j] > queries[i])
                             count++;
-                    }                   
+                    }
                 }
                 Console.WriteLine(count);
-            } 
+            }
         }
         static void CheckPalindrom(int[] arr, int num)
         {
@@ -31,7 +32,7 @@ namespace Assignment
                 {
                     count++;
                 }
-                if(count == num)
+                if (count == num)
                     Console.WriteLine("Yes");
                 else
                     Console.WriteLine("No");
@@ -44,7 +45,7 @@ namespace Assignment
             {
                 stack.Push(q.Dequeue());
             }
-            while(stack.Count > 0)
+            while (stack.Count > 0)
             {
                 q.Enqueue(stack.Pop());
             }
@@ -58,7 +59,7 @@ namespace Assignment
         }
         static void CheckIfBalanced(Stack<char> S)
         {
-            while(S.Count > 0)
+            while (S.Count > 0)
             {
                 foreach (char c in S)
                 {
@@ -80,7 +81,7 @@ namespace Assignment
             {
                 foreach (T i in list)
                 {
-                    if(values.Add(i))
+                    if (values.Add(i))
                     {
                         newList.Add(i);
                     }
@@ -127,10 +128,10 @@ namespace Assignment
             #endregion
 
             #region Q03-ReverseFromQueueToStack
-            Queue<int> queue = new Queue<int>();
-            queue.Enqueue(1);
-            queue.Enqueue(2);
-            queue.Enqueue(3);
+            //Queue<int> queue = new Queue<int>();
+            //queue.Enqueue(1);
+            //queue.Enqueue(2);
+            //queue.Enqueue(3);
             //Console.WriteLine("Before the Reverse : ");
             //PrintQueue(queue);
             //ReverseElements(queue);
@@ -157,8 +158,20 @@ namespace Assignment
 
             #region Q06-Remove Odd Numbers
             ArrayList arrayList = new ArrayList() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            ArrayList newArrList = RemoveOdd(arrayList);
-            PrintArrList(newArrList);
+            //ArrayList newArrList = RemoveOdd(arrayList);
+            //PrintArrList(newArrList);
+            #endregion
+
+            #region Q07-Queue Different Data Type
+            Queue queue = new Queue();
+            queue.Enqueue(1);
+            queue.Enqueue("Apple");
+            queue.Enqueue(5.28);
+
+            //foreach (var item in queue)
+            //{
+            //    Console.WriteLine($"item is : {item}");
+            //}
             #endregion
         }
     }
