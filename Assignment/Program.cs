@@ -1,0 +1,308 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Xml.Linq;
+
+namespace Assignment
+{
+    internal class Program
+    {
+        static void CountGreaterNums(int[] arr, int[] queries)
+        {
+            for (int i = 0; i < queries.Length; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr is not null && queries is not null)
+                    {
+                        if (arr[j] > queries[i])
+                            count++;
+                    }
+                }
+                Console.WriteLine(count);
+            }
+        }
+        static void CheckPalindrom(int[] arr, int num)
+        {
+            int count = 0;
+            if (arr is not null)
+            {
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    count++;
+                }
+                if (count == num)
+                    Console.WriteLine("Yes");
+                else
+                    Console.WriteLine("No");
+            }
+        }
+        static void ReverseElements(Queue<int> q)
+        {
+            Stack<int> stack = new Stack<int>();
+            while (q.Count > 0)
+            {
+                stack.Push(q.Dequeue());
+            }
+            while (stack.Count > 0)
+            {
+                q.Enqueue(stack.Pop());
+            }
+        }
+        static void PrintQueue(Queue<int> q)
+        {
+            foreach (int item in q)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        static void CheckIfBalanced(Stack<char> S)
+        {
+            while (S.Count > 0)
+            {
+                foreach (char c in S)
+                {
+                    if (c == '[' || c == '{' || c == '(')
+                        S.Push(c);
+                    else if (c == ']' || c == '}' || c == ')')
+                        if (S.Count == 0 || S.Pop().Equals('[') || S.Pop().Equals('{') || S.Pop().Equals('('))
+                            break;
+                }
+            }
+        }
+        static List<T> RemoveDuplicate<T>(List<T> list)
+        {
+            HashSet<T> values = new HashSet<T>();
+            List<T> newList = new List<T>();
+            if (list == null)
+                return null;
+            else
+            {
+                foreach (T i in list)
+                {
+                    if (values.Add(i))
+                    {
+                        newList.Add(i);
+                    }
+                }
+                return newList;
+            }
+        }
+        static void PrintList<T>(List<T> L)
+        {
+            foreach (T i in L)
+            {
+                Console.WriteLine(i + " ");
+            }
+        }
+        static ArrayList RemoveOdd(ArrayList arrList)
+        {
+            for (int i = 0; i < arrList.Count; i++)
+            {
+                if ((int)arrList[i] % 2 != 0)
+                {
+                    arrList.RemoveAt(i);
+                }
+            }
+            return arrList;
+        }
+        static void PrintArrList(ArrayList arrayList)
+        {
+            foreach (int i in arrayList)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        static void PutOntoStack()
+        {
+            Stack stack = new Stack();
+            int[] Numbers = { 1, 3, 2, 4, 5, 8, 9 };
+            foreach (var i in Numbers)
+            {
+                stack.Push(i);
+            }
+            Console.WriteLine("Enter the target : ");
+            bool flag = int.TryParse(Console.ReadLine(), out int num);
+            SearchForTarget(stack, num);
+        }
+        static void SearchForTarget(Stack S, int num)
+        {
+            bool found = false;
+            int count = 0;
+            foreach (int i in S)
+            {
+                count++;
+                if (num == i)
+                {
+                    found = true;
+                }
+                if (found)
+                {
+                    Console.WriteLine($"Target was found successfully and count of " +
+                        $"elements were checked before finding the target = {count - 1}");
+                    break;
+                }
+            }
+            if (!found)
+                Console.WriteLine("Target was not found");
+        }
+        static void FindIntersection(int[] arr1, int[] arr2)
+        {
+            int count = 0;
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr1[i] == arr2[j])
+                    {
+                        count++;
+                        int help = count % 2;
+                        if (help == 0)
+                            Console.WriteLine(arr1[i]);
+                    }
+                }
+            }
+        }
+        static ArrayList FinDSumUpTarget(ArrayList array, int target)
+        {
+            ArrayList Result = new ArrayList();
+            int currentSum = 0;
+            int i = 0;
+            for (int j = 0; j < array.Count*2; j++)
+            {
+                currentSum += (int)array[j];
+                while (currentSum > target && i <= j)
+                {
+                    currentSum -= (int)array[j];
+                    i++;
+                }
+                if (currentSum == target)
+                {
+                    for (int k = i; k <= i; k++)
+                    {
+                        Result.Add(array[i]);
+                    }
+                    return Result;
+                }
+            }
+            return Result;
+        }
+        static Queue<int> ReverseQueue<T>(Queue<int> q, int k)
+        {
+            if (q is not null && q.Count != 0 && k <= q.Count)
+            {
+                Stack<int> stack = new Stack<int>();
+                for (int i = 0; i < k; i++)
+                {
+                    stack.Push(q.Dequeue());
+                }
+                while(stack.Count > 0)
+                {
+                    q.Enqueue(stack.Pop());
+                }
+                for (int i = 0; i < q.Count-k; i++)
+                {
+                    q.Enqueue(q.Dequeue());
+                }
+            }
+            return q;
+        }
+        static void Main(string[] args)
+        {
+            #region Q01-GreaterThanQueries
+            //int[] arr = { 3, 5, 11 };
+            int[] queries = { 1, 5, 13 };
+            //CountGreaterNums(arr, queries); 
+            #endregion
+
+            #region Q2-Palindrome
+            //int[] Numbers = { 1, 2, 3, 2, 1 };
+            //CheckPalindrom(Numbers, 5);
+            #endregion
+
+            #region Q03-ReverseFromQueueToStack
+            //Queue<int> queue = new Queue<int>();
+            //queue.Enqueue(1);
+            //queue.Enqueue(2);
+            //queue.Enqueue(3);
+            //Console.WriteLine("Before the Reverse : ");
+            //PrintQueue(queue);
+            //ReverseElements(queue);
+            //Console.WriteLine("After the Reverse : ");
+            //PrintQueue(queue);
+            #endregion
+
+            #region Q04-Parentheses is Balanced
+            //Stack<char> stack = new Stack<char>();//[()]{}
+            //stack.Push('[');
+            //stack.Push(']');
+            //stack.Push('{');
+            //stack.Push('}');
+            //stack.Push('(');
+            //stack.Push(')');
+            //CheckIfBalanced(stack);
+            #endregion
+
+            #region Q05-Duplicate Elements
+            List<int> list = new List<int>() { 1, 2, 3, 2, 4, 4 };
+            //List<int> Result = RemoveDuplicate(list);
+            //PrintList(Result);
+            #endregion
+
+            #region Q06-Remove Odd Numbers
+            //ArrayList arrayList = new ArrayList() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            //ArrayList newArrList = RemoveOdd(arrayList);
+            //PrintArrList(newArrList);
+            #endregion
+
+            #region Q07-Queue Different Data Type
+            //Queue queue = new Queue();
+            //queue.Enqueue(1);
+            //queue.Enqueue("Apple");
+            //queue.Enqueue(5.28);
+
+            //foreach (var item in queue)
+            //{
+            //    Console.WriteLine($"item is : {item}");
+            //}
+            #endregion
+
+            #region Q08-Target in Stack
+            //PutOntoStack();
+            #endregion
+
+            #region Q09-Intersection 2 Lists
+            int[] arr1 = new int[] { 1, 2, 3, 4, 4 };
+            int[] arr2 = new int[] { 10, 4 };
+            //FindIntersection(arr1, arr2);
+            #endregion
+
+            #region Q10-Target Sum
+            //ArrayList arrayList = new ArrayList() { 1, 2, 3, 5, 7 };
+            //ArrayList newArrayList = FinDSumUpTarget(arrayList, 12);
+            //if(newArrayList.Count > 0)
+            //{
+            //    PrintArrList(newArrayList);
+            //}
+            //else
+            //    Console.WriteLine("there is no array list equals to target");
+            #endregion
+
+            #region Q11-Reverse Queue
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+            Queue<int> newQueue = ReverseQueue<int>(queue, 3);
+            foreach (int item in newQueue)
+            {
+                Console.WriteLine(item +" ");
+            }
+            #endregion
+        }
+    }
+}
