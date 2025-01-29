@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
@@ -138,20 +139,20 @@ namespace Assignment
                     found = true;
                 }
                 if (found)
-                { 
+                {
                     Console.WriteLine($"Target was found successfully and count of " +
                         $"elements were checked before finding the target = {count - 1}");
                     break;
                 }
             }
-            if(!found)
+            if (!found)
                 Console.WriteLine("Target was not found");
         }
         static void FindIntersection(int[] arr1, int[] arr2)
         {
             int count = 0;
             for (int i = 0; i < arr1.Length; i++)
-            {              
+            {
                 for (int j = 0; j < arr2.Length; j++)
                 {
                     if (arr1[i] == arr2[j])
@@ -160,9 +161,33 @@ namespace Assignment
                         int help = count % 2;
                         if (help == 0)
                             Console.WriteLine(arr1[i]);
-                    } 
+                    }
                 }
             }
+        }
+        static ArrayList FinDSumUpTarget(ArrayList array, int target)
+        {
+            ArrayList Result = new ArrayList();
+            int currentSum = 0;
+            int i = 0;
+            for (int j = 0; j < array.Count*2; j++)
+            {
+                currentSum += (int)array[j];
+                while (currentSum > target && i <= j)
+                {
+                    currentSum -= (int)array[j];
+                    i++;
+                }
+                if (currentSum == target)
+                {
+                    for (int k = i; k <= i; k++)
+                    {
+                        Result.Add(array[i]);
+                    }
+                    return Result;
+                }
+            }
+            return Result;
         }
         static void Main(string[] args)
         {
@@ -207,7 +232,7 @@ namespace Assignment
             #endregion
 
             #region Q06-Remove Odd Numbers
-            ArrayList arrayList = new ArrayList() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            //ArrayList arrayList = new ArrayList() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             //ArrayList newArrList = RemoveOdd(arrayList);
             //PrintArrList(newArrList);
             #endregion
@@ -231,7 +256,18 @@ namespace Assignment
             #region Q09-Intersection 2 Lists
             int[] arr1 = new int[] { 1, 2, 3, 4, 4 };
             int[] arr2 = new int[] { 10, 4 };
-            FindIntersection(arr1, arr2);
+            //FindIntersection(arr1, arr2);
+            #endregion
+
+            #region Q10-Target Sum
+            ArrayList arrayList = new ArrayList() { 1, 2, 3, 5, 7 };
+            ArrayList newArrayList = FinDSumUpTarget(arrayList, 12);
+            if(newArrayList.Count > 0)
+            {
+                PrintArrList(newArrayList);
+            }
+            else
+                Console.WriteLine("there is no array list equals to target");
             #endregion
         }
     }
