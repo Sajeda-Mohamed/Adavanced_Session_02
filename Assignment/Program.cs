@@ -68,16 +68,41 @@ namespace Assignment
                 }
             }
         }
+        static List<T> RemoveDuplicate<T>(List<T> list)
+        {
+            HashSet<T> values = new HashSet<T>();
+            List<T> newList = new List<T>();
+            if (list == null)
+                return null;
+            else
+            {
+                foreach (T i in list)
+                {
+                    if(values.Add(i))
+                    {
+                        newList.Add(i);
+                    }
+                }
+                return newList;
+            }
+        }
+        static void PrintList<T>(List<T> L)
+        {
+            foreach (T i in L)
+            {
+                Console.WriteLine(i + " ");
+            }
+        }
         static void Main(string[] args)
         {
             #region Q01-GreaterThanQueries
-            int[] arr = { 3, 5, 11 };
+            //int[] arr = { 3, 5, 11 };
             int[] queries = { 1, 5, 13 };
             //CountGreaterNums(arr, queries); 
             #endregion
 
             #region Q2-Palindrome
-            int[] Numbers = { 1, 2, 3, 2, 1 };
+            //int[] Numbers = { 1, 2, 3, 2, 1 };
             //CheckPalindrom(Numbers, 5);
             #endregion
 
@@ -95,13 +120,19 @@ namespace Assignment
 
             #region Q04-Parentheses is Balanced
             Stack<char> stack = new Stack<char>();//[()]{}
-            //stack.Push('[');
-            //stack.Push(']');
-            //stack.Push('{');
-            //stack.Push('}');
-            //stack.Push('(');
-            //stack.Push(')');
-            //CheckIfBalanced(stack);
+                                                  //stack.Push('[');
+                                                  //stack.Push(']');
+                                                  //stack.Push('{');
+                                                  //stack.Push('}');
+                                                  //stack.Push('(');
+                                                  //stack.Push(')');
+                                                  //CheckIfBalanced(stack);
+            #endregion
+
+            #region Q05-Duplicate Elements
+            List<int> list = new List<int>() { 1, 2, 3, 2, 4, 4 };
+            List<int> Result = RemoveDuplicate(list);
+            PrintList(Result);
             #endregion
         }
     }
